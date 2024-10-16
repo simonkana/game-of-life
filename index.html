@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game of Life</title>
+    <style>
+      body {
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      h2 {
+        margin-top: 20px;
+      }
+
+      canvas {
+        border: none;
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .controls {
+        position: fixed;
+        width: 100%;
+        bottom: 32px;
+        z-index: 9999;
+      }
+
+      .panel {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px 40px;
+        background-color: white;
+        border-radius: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0px 0px 16px 8px rgba(192, 192, 192, 0.5);
+      }
+
+      .slider-container {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .slider {
+        width: 100%;
+        accent-color: #00a6ed;
+      }
+
+      .slider:hover,
+      .slider:focus,
+      .slider:focus-visible {
+        accent-color: #30acdc;
+      }
+
+      .btn-container {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      input[type="button"] {
+        padding: 12px 16px;
+        border: none;
+        border-radius: 16px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas></canvas>
+
+    <div class="controls">
+      <div class="panel">
+        <div class="slider-container">
+          <label for="speed-slider">Animation speed (1-60 FPS):</label>
+          <input
+            type="range"
+            id="speed-slider"
+            min="1"
+            max="60"
+            value="60"
+            class="slider"
+          />
+        </div>
+
+        <div class="slider-container">
+          <label for="density-slider">Population Density (0-100%)</label>
+          <input
+            type="range"
+            id="density-slider"
+            min="0"
+            max="100"
+            value="50"
+            class="slider"
+          />
+        </div>
+
+        <div class="btn-container">
+          <input type="button" value="▶️ Start" onclick="startGameLoop()" />
+          <input type="button" value="⏹️ Stop" onclick="pauseGameLoop()" />
+          <input
+            type="button"
+            value="🔃 Reset Simulation"
+            onclick="resetGameLoop()"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
